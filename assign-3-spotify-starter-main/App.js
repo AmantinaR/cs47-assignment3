@@ -1,8 +1,13 @@
-import { StyleSheet, Text, SafeAreaView } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Pressable } from "react-native";
 import { useState, useEffect } from "react";
 import { ResponseType, useAuthRequest } from "expo-auth-session";
 import { myTopTracks, albumTracks } from "./utils/apiOptions";
 import { REDIRECT_URI, SCOPES, CLIENT_ID, ALBUM_ID } from "./utils/constants";
+import SpotifyButton from './SpotifyButton';
+import SongList from './SongList';
+import Song from './Song';
+import { Colors } from './Themes';
+import { Images } from './Themes';
 
 // Endpoints for authorizing with Spotify
 const discovery = {
@@ -38,15 +43,28 @@ export default function App() {
       // TODO: Select which option you want: Top Tracks or Album Tracks
 
       // Comment out the one you are not using
-      // myTopTracks(setTracks, token);
-      albumTracks(ALBUM_ID, setTracks, token);
+      myTopTracks(setTracks, token);
+      // albumTracks(ALBUM_ID, setTracks, token);
     }
   }, [token]);
+  let contentDisplayed = null;
+
+  if (token) {
+    contentDisplayed = <SongList/>
+  } else {
+    contentDisplayed = <SpotifyButton/>
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* TODO */}
-      <Text style={{ color: "white" }}>Welcome to Assignment 3 - Spotify</Text>
+      {contentDisplayed}
+      <Song>
+        url=0
+        title=0
+        artist=0
+        album=0
+        duration=0
+      </Song>
     </SafeAreaView>
   );
 }
