@@ -21,11 +21,11 @@ export default function Song(props) {
         <Image style = {styles.picture} source={{uri: props.url}}/>
       </View>
       <View style={styles.songtitle}>
-        <Text style = {styles.text}> {props.title} </Text>
-        <Text style = {styles.text}> {props.artist} </Text>
+        <Text style = {styles.text} numberOfLines={1}> {props.title} </Text>
+        <Text style = {styles.textLight} numberOfLines={1}> {props.artist} </Text>
       </View>
       <View style={styles.albumname}>
-        <Text style = {styles.text}> {props.album} </Text>
+        <Text style = {styles.text} numberOfLines={1}> {props.album} </Text>
       </View>
       <View style={styles.durationstyle}>
         <Text style = {styles.text}> {props.duration} </Text>
@@ -40,59 +40,49 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignContent: 'center',
-    //borderWidth: 1,
-    //borderColor: 'green',
     width: '100%',
     height: 80,
-    marginVertical: 4
+    marginVertical: -3
 
   },
   id: {
     width: '5%',
     alignItems: 'center',
     justifyContent: 'center',
-    //borderWidth: 1,
-    //borderColor: 'white',
     marginLeft: 0
   },
   albumpic: {
     width: '19%',
     height: '100%',
-    //borderWidth: 1,
-    //borderColor: 'white',
     aspectRatio: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   picture: {
-    width: 80,
-    height: 80
+    width: 65,
+    height: 65
   },
   songtitle: {
     width: '25%',
-    //borderWidth: 1,
-    //borderColor: 'white',
-    //alignItems: 'center',
     justifyContent: 'center',
   },
   albumname: {
-    width: '20%',
-    //borderWidth: 1,
-    //borderColor: 'white',
-    //alignItems: 'center',
+    width: '25%',
     justifyContent: 'center',
   },
   durationstyle: {
     width: '10%',
-    //borderWidth: 1,
-    //borderColor: 'white',
-    //alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    fontSize: 14,
+    fontSize: 12,
     color: Colors.gray,
     fontFamily: 'Arial Rounded MT Bold'
+  },
+  textLight: {
+    fontSize: 12,
+    color: Colors.gray,
+    fontFamily: 'Arial'
   }
 
 });

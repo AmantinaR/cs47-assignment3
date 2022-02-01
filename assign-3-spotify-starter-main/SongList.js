@@ -62,8 +62,9 @@ const styles = StyleSheet.create({
     marginVertical: 12
   },
   logo: {
-    width: 30,
-    height: 30
+    width: 24,
+    height: 24,
+    marginRight: 7
   },
   headerParent: {
     flexDirection: 'row',

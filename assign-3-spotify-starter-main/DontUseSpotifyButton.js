@@ -37,10 +37,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'white',
     fontFamily: 'Arial Rounded MT Bold',
+    marginLeft: 10
   },
   logo: {
     width: 30,
-    height: 30
+    height: 30,
+    marginRight: 20
   },
   flexparent: {
     flexDirection: 'row',

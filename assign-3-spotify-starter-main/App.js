@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { ResponseType, useAuthRequest } from "expo-auth-session";
 import { myTopTracks, albumTracks } from "./utils/apiOptions";
 import { REDIRECT_URI, SCOPES, CLIENT_ID, ALBUM_ID } from "./utils/constants";
-import SpotifyButton from './SpotifyButton';
 import SongList from './SongList';
 import Song from './Song';
 import { Colors } from './Themes';
@@ -102,7 +101,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 30,
-    height: 30
+    height: 30,
+    marginRight: 5
   },
   flexparent: {
     flexDirection: 'row',
