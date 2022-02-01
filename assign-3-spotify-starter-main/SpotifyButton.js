@@ -11,12 +11,13 @@ import { Colors } from './Themes';
 import { Images } from './Themes';
 import Song from './Song';
 
+
+
 export default function SpotifyButton() {
+
   return(
     <Pressable style = {styles.button}
-      onPress={() => {
-          promptAsync()
-        }}>
+      onPress={() => promptAsync()}>
         <View style={styles.flexparent}>
           <Image source={Images.spotify} style={styles.logo}/>
           <Text style = {styles.text}>CONNECT WITH SPOTIFY</Text>
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     borderRadius: 99999,
     backgroundColor: Colors.spotify,
     padding: 10,
-    
+
   },
   text: {
     fontSize: 14,

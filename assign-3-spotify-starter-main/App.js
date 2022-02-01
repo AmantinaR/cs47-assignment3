@@ -1,4 +1,8 @@
-import { StyleSheet, Text, SafeAreaView, Pressable } from "react-native";
+import { StyleSheet, Text, SafeAreaView,
+  View,
+  Platform,
+  TouchableOpacity,
+  Image, Pressable, FlatList} from "react-native";
 import { useState, useEffect } from "react";
 import { ResponseType, useAuthRequest } from "expo-auth-session";
 import { myTopTracks, albumTracks } from "./utils/apiOptions";
@@ -14,6 +18,8 @@ const discovery = {
   authorizationEndpoint: "https://accounts.spotify.com/authorize",
   tokenEndpoint: "https://accounts.spotify.com/api/token"
 };
+
+
 
 export default function App() {
   const [token, setToken] = useState("");
@@ -47,26 +53,33 @@ export default function App() {
       // albumTracks(ALBUM_ID, setTracks, token);
     }
   }, [token]);
+
+  const SpotButton = () => {
+    return(
+      <Pressable style = {styles.button}
+        onPress={() => promptAsync()}>
+          <View style={styles.flexparent}>
+            <Image source={Images.spotify} style={styles.logo}/>
+            <Text style = {styles.text}>CONNECT WITH SPOTIFY</Text>
+          </View>
+      </Pressable>
+    );
+  }
+
   let contentDisplayed = null;
 
   if (token) {
-    contentDisplayed = <SongList/>
+    contentDisplayed = <SongList data={tracks}/>
   } else {
-    contentDisplayed = <SpotifyButton/>
+    contentDisplayed = <SpotButton/>
   }
 
   return (
     <SafeAreaView style={styles.container}>
       {contentDisplayed}
-      <Song>
-        url=0
-        title=0
-        artist=0
-        album=0
-        duration=0
-      </Song>
     </SafeAreaView>
   );
+  console.log('wth');
 }
 
 const styles = StyleSheet.create({
@@ -75,5 +88,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1
-  }
+  },
+  button: {
+    borderRadius: 99999,
+    backgroundColor: Colors.spotify,
+    padding: 10,
+
+  },
+  text: {
+    fontSize: 14,
+    color: 'white',
+    fontFamily: 'Arial Rounded MT Bold',
+  },
+  logo: {
+    width: 30,
+    height: 30
+  },
+  flexparent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
