@@ -45,7 +45,6 @@ export default function App() {
 
   useEffect(() => {
     if (token) {
-      // TODO: Select which option you want: Top Tracks or Album Tracks
 
       // Comment out the one you are not using
       myTopTracks(setTracks, token);

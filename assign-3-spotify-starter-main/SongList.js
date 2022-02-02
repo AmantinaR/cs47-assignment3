@@ -13,17 +13,14 @@ import { Images } from './Themes';
 import  millisToMinuteSeconds  from "./utils/millisToMinuteSeconds";
 
 const renderSong = (track) => {
-  console.log(JSON.stringify(track));
-  console.log('\n');
-  const firstArtist = track.item.artists[0]
+  const firstArtist = track.item.artists
   const firstImage = track.item.album.images[0]
-  console.log(firstArtist.name)
-  console.log(firstImage.url)
+  // console.log(track.item.artists)
   return(
   <Song
     url = {firstImage.url}
     title = {track.item.name}
-    artist = {firstArtist.name}
+    artists = {track.item.artists}
     album = {track.item.album.name}
     id = {track.index}
     duration = {millisToMinuteSeconds(track.item.duration_ms)}
@@ -42,7 +39,7 @@ export default function SongList({data}) {
       <FlatList
         data = {data}
         renderItem={(track) => renderSong(track)}
-        keyExtractor={(track) => track.id}
+        keyExtractor={(track) => track.index}
       />
     </SafeAreaView>
   );

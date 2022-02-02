@@ -22,6 +22,12 @@ export default function Song(props) {
       </View>
       <View style={styles.songtitle}>
         <Text style = {styles.text} numberOfLines={1}> {props.title} </Text>
+        <View>
+          {props.artists.map((item, idx) => {
+            return <Text style = {styles.textLight} numberOfLines={1}> {item.name} </Text>
+          })}
+        </View>
+
         <Text style = {styles.textLight} numberOfLines={1}> {props.artist} </Text>
       </View>
       <View style={styles.albumname}>
@@ -83,6 +89,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: Colors.gray,
     fontFamily: 'Arial'
+  },
+  rowParent: {
+    flexDirection: 'row',
   }
 
 });
