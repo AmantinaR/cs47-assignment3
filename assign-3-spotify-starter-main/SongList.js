@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { StyleSheet, Text, SafeAreaView,
   View,
   Platform,
@@ -11,11 +12,16 @@ import Song from './Song';
 import { Colors } from './Themes';
 import { Images } from './Themes';
 import  millisToMinuteSeconds  from "./utils/millisToMinuteSeconds";
+import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
 
 const renderSong = (track) => {
   const firstArtist = track.item.artists
   const firstImage = track.item.album.images[0]
-  // console.log(track.item.artists)
+  console.log(track.item)
+  console.log('\n')
   return(
   <Song
     url = {firstImage.url}
@@ -24,6 +30,8 @@ const renderSong = (track) => {
     album = {track.item.album.name}
     id = {track.index}
     duration = {millisToMinuteSeconds(track.item.duration_ms)}
+    details = {track.item.external_urls.spotify}
+    preview = {track.item.preview_url}
 
   />);
 }
