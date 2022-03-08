@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { StyleSheet, Text, SafeAreaView,
   View,
   Platform,
@@ -12,13 +11,6 @@ import SongList from './SongList';
 import Song from './Song';
 import { Colors } from './Themes';
 import { Images } from './Themes';
-import { Ionicons } from '@expo/vector-icons';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import SongDetails from './SongDetails';
-import SongPreview from './SongPreview';
-import { useNavigation } from '@react-navigation/native';
-import { WebView } from 'react-native-webview';
 
 // Endpoints for authorizing with Spotify
 const discovery = {
@@ -27,7 +19,6 @@ const discovery = {
 };
 
 
-const Stack = createStackNavigator();
 
 export default function App() {
   const [token, setToken] = useState("");
@@ -81,24 +72,12 @@ export default function App() {
     contentDisplayed = <SpotButton/>
   }
 
-  function HomeScreen({ navigation }) {
-    return (
-      <SafeAreaView style={styles.container}>
-        {contentDisplayed}
-      </SafeAreaView>
-    );
-  }
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerStyle: {backgroundColor: Colors.background},
-                                      headerTitleStyle: {color: 'white'}}}>
-        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
-        <Stack.Screen name="SongDetails" component={SongDetails} options={{title: 'Song Details', headerBackTitle: 'Back'}}/>
-        <Stack.Screen name="SongPreview" component={SongPreview} options={{title: 'Song Preview', headerBackTitle: 'Back'}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.container}>
+      {contentDisplayed}
+    </SafeAreaView>
   );
+  console.log('wth');
 }
 
 const styles = StyleSheet.create({

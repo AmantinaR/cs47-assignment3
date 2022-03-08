@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { StyleSheet, Text, SafeAreaView,
   View,
   Platform,
@@ -10,24 +9,18 @@ import { myTopTracks, albumTracks } from "./utils/apiOptions";
 import { REDIRECT_URI, SCOPES, CLIENT_ID, ALBUM_ID } from "./utils/constants";
 import { Colors } from './Themes';
 import { Images } from './Themes';
-import { Ionicons } from '@expo/vector-icons';
-import { WebView } from 'react-native-webview';
-import { useNavigation } from '@react-navigation/native';
 
 export default function Song(props) {
-  const id = props.id + 1
-  const navigation = useNavigation();
+  const duration = props.id + 1
   return(
     <View style={styles.songParent}>
       <View style={styles.id}>
-        <Pressable onPress={() => navigation.navigate('SongPreview', {preview: props.preview})}>
-          <Ionicons name="play-circle" size={22} color={Colors.spotify}/>
-        </Pressable>
+        <Text style={styles.text}> {duration} </Text>
       </View>
-      <Pressable style={styles.albumpic} onPress={() => navigation.navigate('SongDetails', {uri: props.details})}>
+      <View style={styles.albumpic}>
         <Image style = {styles.picture} source={{uri: props.url}}/>
-      </Pressable>
-      <Pressable style={styles.songtitle} onPress={() => navigation.navigate('SongDetails', {uri: props.details})}>
+      </View>
+      <View style={styles.songtitle}>
         <Text style = {styles.text} numberOfLines={1}> {props.title} </Text>
         <View>
           {props.artists.map((item, idx) => {
@@ -36,13 +29,13 @@ export default function Song(props) {
         </View>
 
         <Text style = {styles.textLight} numberOfLines={1}> {props.artist} </Text>
-      </Pressable>
-      <Pressable style={styles.albumname} onPress={() => navigation.navigate('SongDetails', {uri: props.details})}>
+      </View>
+      <View style={styles.albumname}>
         <Text style = {styles.text} numberOfLines={1}> {props.album} </Text>
-      </Pressable>
-      <Pressable style={styles.durationstyle} onPress={() => navigation.navigate('SongDetails', {uri: props.details})}>
+      </View>
+      <View style={styles.durationstyle}>
         <Text style = {styles.text}> {props.duration} </Text>
-      </Pressable>
+      </View>
     </View>
   );
 }
